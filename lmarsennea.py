@@ -6,7 +6,20 @@ from multiprocessing import Pool, cpu_count
 from functools import cache, lru_cache
 import cProfile
 from sympy.ntheory.primetest import mr
+from dogpile.cache import make_region
 
+
+region = make_region().configure(
+    'dogpile.cache.dbm',
+    expiration_time = 300,
+    arguments = {
+        "filename": "propable-primes.dbm"
+    }
+)
+
+
+# @lru_cache(maxsize=10)
+# @cache
 
 # it's counting only forward and require only one previous value actually
 @lru_cache(maxsize=10)
@@ -41,6 +54,7 @@ def miller_rabin_pass(a, s, d, n):
     return a_to_power == n - 1
 
 
+@region.cache_on_arguments()
 def test_rabina(n):
     d = n - 1
     s = 0

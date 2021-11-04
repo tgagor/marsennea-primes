@@ -1,0 +1,6 @@
+decorator==5.1.0
+dogpile.cache==1.1.4
+mpmath==1.2.1
+pbr==5.7.0
+stevedore==3.5.0
+sympy==1.9
