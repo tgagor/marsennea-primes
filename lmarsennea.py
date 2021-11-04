@@ -11,15 +11,12 @@ from dogpile.cache import make_region
 
 region = make_region().configure(
     'dogpile.cache.dbm',
-    expiration_time = 300,
-    arguments = {
+    expiration_time=300,
+    arguments={
         "filename": "propable-primes.dbm"
     }
 )
 
-
-# @lru_cache(maxsize=10)
-# @cache
 
 # it's counting only forward and require only one previous value actually
 @lru_cache(maxsize=10)
