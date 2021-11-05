@@ -13,9 +13,9 @@ run: requirements
 .venv:
 	python -m venv $(VENV_DIR)
 
-create-venv: .venv
+venv: .venv
 
-requirements: create-venv
+requirements: venv
 	@( \
 	   . $(VENV_DIR)/bin/activate; \
 	   pip install -r requirements.txt; \
