@@ -4,8 +4,8 @@ import random
 from multiprocessing import Pool, cpu_count
 # from multiprocessing.pool import ThreadPool
 from functools import cache, lru_cache
-import cProfile
-from sympy.ntheory.primetest import mr
+# import cProfile
+# from sympy.ntheory.primetest import mr
 from dogpile.cache import make_region
 
 
