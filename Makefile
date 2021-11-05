@@ -2,14 +2,22 @@
 
 VENV_DIR = .venv
 
+all: run
+
+run: requirements
+	( \
+	   . $(VENV_DIR)/bin/activate; \
+	   python lmarsennea.py; \
+	)
+
 .venv:
 	python -m venv $(VENV_DIR)
 
 create-venv: .venv
 
 requirements: create-venv
-	( \
-	   source .venv/bin/activate; \
+	@( \
+	   . $(VENV_DIR)/bin/activate; \
 	   pip install -r requirements.txt; \
 	)
 
