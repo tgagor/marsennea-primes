@@ -11,7 +11,7 @@ from dogpile.cache import make_region
 
 region = make_region().configure(
     'dogpile.cache.dbm',
-    expiration_time=300,
+    # expiration_time=300,
     arguments={
         "filename": "propable-primes.dbm"
     }
@@ -19,7 +19,7 @@ region = make_region().configure(
 
 
 # it's counting only forward and require only one previous value actually
-@lru_cache(maxsize=10)
+@lru_cache(maxsize=1)
 def S(k, N):
     return 4 if k == 1 else (S(k-1, N)**2-2) % N
 
